@@ -1,4 +1,15 @@
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
+
+const StyledMole = styled.div`
+  margin: auto;
+  width: 45px;
+  height: 45px;
+  border-radius: 25px;
+  background-color: red;
+  display: ${({show}) => show? 'block': 'none'}
+`;
+
 
 function Mole() {
   const [show, setShow] = useState(false);
@@ -16,9 +27,8 @@ function Mole() {
   });
 
   return (
-    <div className="Mole">
-      {show? "mole" : ''}
-    </div>
+    <StyledMole className="Mole" show={show}>
+    </StyledMole>
   );
 }
 
