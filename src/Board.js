@@ -23,15 +23,20 @@ const Hole = styled.div `
 
 function Board() {
   const [board, setBoard] = useState([[1, 2, 3],[4],[5, 6]]);
+  const [score, setScore] = useState(0);
 
-  function renderBoard(){
-    return board.map(ele => <Row>{ele.map(c => <Hole><Mole /></Hole>)}</Row>);
+  function countScore(){
+    setScore(score + 1);
   }
 
+  function renderBoard(){
+    return board.map(ele => <Row>{ele.map(c => <Hole><Mole triggerScore={countScore}/></Hole>)}</Row>);
+  }
 
   const boardHTML = renderBoard();
   return (
     <StyledBoard className="Board">
+      <div>Your score: {score}</div>
       {boardHTML}
     </StyledBoard>
   );
