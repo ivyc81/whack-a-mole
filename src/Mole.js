@@ -15,15 +15,17 @@ function Mole(props) {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    let timeout;
     let timer = setInterval(() => {
       setShow(true);
-      setTimeout(() => setShow(false), 3000);
-    }, Math.random() * 3000)
+      timeout = setTimeout(() => setShow(false), 1000);
+    }, Math.random() * 4000 + 1000)
 
     return function cleanup() {
       clearInterval(timer);
+      clearTimeout(timeout);
     };
-  });
+  }, []);
 
   function handleClick(evt){
     props.triggerScore();
